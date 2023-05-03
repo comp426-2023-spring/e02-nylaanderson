@@ -102,3 +102,43 @@ process.on('SIGINT', () => {
         }    
     })
 })
+
+import  './lib/rpsls.js';
+import rpsls from './lib/rpsls.js';
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/app/', (req, res, next) => {
+	res.status(200).send("200 OK");
+});
+
+app.post('/app/rps/play/', (req,res) => {
+	res.status(200).send(rpsls.rps(req.body.shot));
+});
+
+app.post('/app/rpsls/play/', (req,res) => {
+	res.status(200).send(rpsls.rpsls(req.body.shot));
+});
+
+app.get('/app/rps/play/', (req,res) => {
+	res.status(200).send(rpsls.rps(req.query.shot));
+});
+
+app.get('/app/rpsls/play/', (req,res) => {
+	res.status(200).send(rpsls.rpsls(req.query.shot));
+});
+
+app.get('/app/rps/play/:shot/', (req,res) => {
+	res.status(200).send(rpsls.rps(req.params.shot));
+});
+
+app.get('/app/rpsls/play/:shot/', (req,res) => {
+	res.status(200).send(rpsls.rpsls(req.params.shot));
+});
+
+app.get('*', (req,res) => {
+	res.status(404).send('404 NOT FOUND')
+});
+
+
