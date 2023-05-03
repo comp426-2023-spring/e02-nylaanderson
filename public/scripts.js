@@ -12,8 +12,16 @@ function showHideShots() {
 }
 
 function startOver() {
+    $('form').show();
+    $('#play').show();
     document.getElementById('userinput').reset();
     showHideShots();
+}
+
+
+function hideGame() {
+	$('form').hide();
+	$('#play').hide();
 }
 
 async function playGame() {
