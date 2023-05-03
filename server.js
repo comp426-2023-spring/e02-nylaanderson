@@ -113,20 +113,12 @@ app.get('/app/', (req, res, next) => {
 	res.status(200).send("200 OK");
 });
 
-app.post('/app/rps/play/', (req,res) => {
-	res.status(200).send(rpsls.rps(req.body.shot));
-});
-
-app.post('/app/rpsls/play/', (req,res) => {
-	res.status(200).send(rpsls.rpsls(req.body.shot));
-});
-
 app.get('/app/rps/play/', (req,res) => {
-	res.status(200).send(rpsls.rps(req.query.shot));
+	res.status(200).send(rpsls.rpsStd());
 });
 
 app.get('/app/rpsls/play/', (req,res) => {
-	res.status(200).send(rpsls.rpsls(req.query.shot));
+	res.status(200).send(rpsls.rpslsStd());
 });
 
 app.get('/app/rps/play/:shot/', (req,res) => {

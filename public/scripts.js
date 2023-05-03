@@ -21,7 +21,13 @@ async function playGame() {
 	let shot = $('input[type=radio][name=shot]:checked').val();
 	let baseurl = window.location.href + 'app/'
 	console.log(baseurl)
-	let url = baseurl + game + '/play/' + shot 
+	let url
+	if (document.getElementById('opponent').checked == true) {
+		url = baseurl + game + '/play/' + shot
+		console.log(url)
+	} else {
+		 url = baseurl + game + '/play/'
+	} 
 	console.log(url)
 	
 	let response = await fetch(url)
