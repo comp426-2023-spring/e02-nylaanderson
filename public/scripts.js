@@ -3,13 +3,21 @@
 // https://github.com/jdmar3/coinserver
 
 function showHideShots() {
+	$('.shots').hide()
 	let check = document.getElementById('opponent');
-	if (check.checked == true) {
+	let rps = document.getElementById('rps');
+	let rpsls_game = document.getElementById('rpsls');
+	if (rps.checked == true) {
+		
+		$('.rps.shots').show()
+	}
+	else if (rpsls_game.checked == true) {
 		$('.shots').show() 
-	} else {
+	}
+	else {
 		$('.shots').hide()
 	}
-}
+}	
 
 function startOver() {
     $('form').show();
