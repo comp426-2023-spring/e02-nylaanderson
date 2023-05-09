@@ -7,11 +7,11 @@ function showHideShots() {
 	let check = document.getElementById('opponent');
 	let rps = document.getElementById('rps');
 	let rpsls_game = document.getElementById('rpsls');
-	if (rps.checked == true) {
+	if (rps.checked == true && check.checked == true) {
 		
 		$('.rps.shots').show()
 	}
-	else if (rpsls_game.checked == true) {
+	else if (rpsls_game.checked == true && check.checked == true) {
 		$('.shots').show() 
 	}
 	else {
@@ -24,6 +24,7 @@ function startOver() {
     $('#play').show();
     document.getElementById('userinput').reset();
     showHideShots();
+    $('.results').hide();
 }
 
 
@@ -31,6 +32,7 @@ function hideGame() {
 	$('form').hide();
 	$('#play').hide();
 }
+
 
 async function playGame() {
 	let game = $('input[type=radio][name=game]:checked').val();
@@ -48,6 +50,13 @@ async function playGame() {
 	
 	let response = await fetch(url)
 	let result = await response.json()
-	
 	console.log(result)
+	
+	var results_container = document.getElementById("results");
+	if(document.getElementById("opponent").checked == true) {
+		results_container.innerHTML = "<pre>" + "you:" + JSON.stringify(result.player) + "opponent:" + JSON.stringify(result.opponent) + "result:" + JSON.stringify(result.result) + "</pre>"
+	} else {
+	results_container.innerHTML ="<pre>" + JSON.stringify(result.player) +  "</pre>"
+	}
+	$('.results').show();
 }
